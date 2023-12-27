@@ -3,7 +3,7 @@
 @section('container')
 
 
-<h1>{{ $quiz->title }} Quiz Details</h1>
+<h3 class="mt-3 mb-2 " style="font-family: poppins;">{{ $quiz->title }} Quiz Details</h3>
 @if (session()->has('success'))
 <div class="alert alert-success" role="alert">
     {{ session('success') }}

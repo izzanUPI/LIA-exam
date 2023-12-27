@@ -3,7 +3,7 @@
 @section('container')
 
         
-    <h1>Edit Options for Question: {{ $question->question_text }}</h1>
+    <h3 class="mt-3 mb-2 " style="font-family: poppins;">Edit Options for Question: {{ $question->question_text }}</h3>
 
     <form method="POST" action="/dashboard/quiz/{{ $quiz->id }}/question/{{ $question->id }}/option/{{ $question->id }}">
         @csrf

@@ -2,13 +2,15 @@
 
 @section('container')
 
-    <h1>Users Table</h1>
+    <h3 class="mt-3 mb-2 " style="font-family: poppins;">Users Table</h3>
     @if (session()->has('success'))
     <div class="alert alert-success" role="alert">
         {{ session('success') }}
       </div>
     @endif
-    <a class="btn btn-primary my-3" href="/users/create" role="button">Create User</a>
+  
+      <a class="btn btn-primary mb-4 px-5" href="/users/create" role="button">Create User</a>
+
     
     
 <div class="card">

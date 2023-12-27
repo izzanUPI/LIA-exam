@@ -3,7 +3,7 @@
 @section('container')
 
     <div class="pagetitle">
-    <h1>Your Quizzes</h1>
+    <h3 class="mt-3 mb-2 " style="font-family: poppins;">Your Quizzes</h3>
     </div><!-- End Page Title -->
     <hr>
         @if (session()->has('warning'))
@@ -12,6 +12,8 @@
     </div>
     @endif
     @can('admin')
+    <a class="btn btn-primary my-3" href="/dashboard/quiz/create" role="button">Create Quiz</a>
+    @elsecan('teacher')
     <a class="btn btn-primary my-3" href="/dashboard/quiz/create" role="button">Create Quiz</a>
     @endcan
     <section class="section">
@@ -31,6 +33,8 @@
                     <a class="btn btn-primary my-3" href="/dashboard/quiz/{{ $quiz->id }}/start" role="button">Start</a>
                     <a class="btn btn-primary my-3" href="/dashboard/quiz/{{ $quiz->id }}/result" role="button">View Result</a>
                     @can('admin')
+                    <a class="btn bg-warning bi-gear-fill" href="/dashboard/quiz/{{ $quiz->id }}/question"> Details</a>
+                    @elsecan('teacher')
                     <a class="btn bg-warning bi-gear-fill" href="/dashboard/quiz/{{ $quiz->id }}/question"> Details</a>
                     @endcan
                 </div>

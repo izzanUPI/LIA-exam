@@ -40,12 +40,15 @@
 <body>
     <header id="header" class="header fixed-top d-flex align-items-center">
       <div class="d-flex align-items-center justify-content-between">
+        <i class="bi bi-list toggle-sidebar-btn text-primary"></i>
         <a href="" class="logo d-flex align-items-center">
           <img src="" alt="">
-          <span class="d-none d-lg-block">LB LIA Metro Dashboard</span>
+          <span class=" d-lg-block ms-2 text-primary" style="font-family: poppins;">LB LIA METRO</span>
         </a>
       </div><!-- End Logo -->
   </header><!-- End Header -->
+
+  
 
   <aside id="sidebar" class="sidebar">
 
@@ -56,7 +59,13 @@
             <i class="bi bi-journal-text">
               </i><span>Quiz</span></i>
           </a>
-        </li><!-- End Tables Nav -->
+        </li><!-- End Quiz Nav -->
+        <li class="nav-item">
+          <a class="nav-link collapsed " href="/profile">
+            <i class="bi bi-person">
+              </i><span>Profile</span></i>
+          </a>
+        </li><!-- End Profie Nav -->
         @can('admin')
         <li class="nav-item">
           <a class="nav-link collapsed " href="/users">
@@ -71,16 +80,16 @@
               </i><span>Profile</span></i>
           </a>
         </li><!-- End Tables Nav --> --}}
-        <li class="nav-item">
-          <form action="/logout" method="post">
-              @csrf
-              <button type="submit" class="nav-link collapsed">
-                  <i class="bi bi-box-arrow-in-right">
-                  </i>
-                  Logout
-              </button>
-          </form>
-        </li>
+        <li class="nav-item" >
+    <form action="/logout" method="post">
+        @csrf
+        <button type="submit" class="nav-link collapsed w-100">
+            <i class="bi bi-box-arrow-in-right"></i>
+            Logout
+        </button>
+    </form>
+</li>
+
       </ul>
   </aside><!-- End Sidebar-->
     <main id="main" class="main">

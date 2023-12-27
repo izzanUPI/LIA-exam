@@ -63,6 +63,7 @@ Route::get('/quiz/listening', function(){
     return view('quizListening');
 });
 
+
 Route::get('/login', [LoginController::class,'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class,'authenticate']);
 Route::post('/logout', [LoginController::class,'logout']);
@@ -73,19 +74,22 @@ Route::get('/dashboard', [QuizController::class,'index'])->middleware('auth');
 //     return view('createQuestion');
 // });
 
-Route::resource('/dashboard/quiz', QuizController::class);
+Route::get('/dashboard/quiz', [QuizController::class, 'index'])->middleware('auth');
+Route::get('/dashboard/quiz/create', [QuizController::class, 'create'])->middleware('adminNTeacher');
+route::post('/dashboard/quiz',[QuizController::class, 'store']);
+
 Route::resource('/users', UserController::class)->middleware('admin');
 
-Route::resource('/dashboard/quiz/{quiz}/question', QuestionController::class)->middleware('admin');
-Route::get('/dashboard/quiz/{quiz}/question', [QuestionController::class,'index'])->name('view.quiz.show');
+Route::resource('/dashboard/quiz/{quiz}/question', QuestionController::class)->middleware('adminNTeacher');
+Route::get('/dashboard/quiz/{quiz}/question', [QuestionController::class,'index'])->name('view.quiz.show')->middleware('adminNTeacher');
 
-Route::resource('/dashboard/quiz/{quiz}/question/{question}/option',OptionController::class)->middleware('admin');
+Route::resource('/dashboard/quiz/{quiz}/question/{question}/option',OptionController::class)->middleware('adminNTeacher');
 
 Route::resource('/dashboard/quiz/{quiz}/start', ScoreController::class)->middleware('auth');
 
 Route::get('/dashboard/quiz/{quiz}/result', [ScoreController::class, 'displayResult'])->middleware('auth');
 
+Route::get('/profile', [UserController::class, 'displayUserInfo'])->middleware('auth');
 
-
-
+Route::post('/profile/{user}', [UserController::class, 'editUserPass'])->middleware('auth');
 

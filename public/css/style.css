@@ -610,7 +610,7 @@ h6 {
   scrollbar-width: thin;
   scrollbar-color: #aab7cf transparent;
   box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
-  background-color: #fff;
+  background-color: #0d6efd;
 }
 
 @media (max-width: 1199px) {
@@ -674,7 +674,7 @@ h6 {
 .sidebar-nav .nav-heading {
   font-size: 11px;
   text-transform: uppercase;
-  color: #899bbd;
+  color: #0d6efd;
   font-weight: 600;
   margin: 10px 0 5px 15px;
 }
@@ -686,7 +686,7 @@ h6 {
   font-weight: 600;
   color: #4154f1;
   transition: 0.3;
-  background: #f6f9ff;
+  background: #0d6efd;
   padding: 10px 15px;
   border-radius: 4px;
 }
@@ -698,12 +698,12 @@ h6 {
 }
 
 .sidebar-nav .nav-link.collapsed {
-  color: #012970;
-  background: #fff;
+  color: #fff;
+  background: #0d6efd;
 }
 
 .sidebar-nav .nav-link.collapsed i {
-  color: #899bbd;
+  color: #fff;
 }
 
 .sidebar-nav .nav-link:hover {
@@ -735,7 +735,7 @@ h6 {
   align-items: center;
   font-size: 14px;
   font-weight: 600;
-  color: #012970;
+  color: #fff;
   transition: 0.3;
   padding: 10px 0 10px 40px;
   transition: 0.3s;

@@ -6,7 +6,10 @@ use App\Models\Kelas;
 use App\Models\User;
 use App\Models\Program;
 use App\Models\Roles;
+use App\Models\Score;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -14,6 +17,23 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function displayUserInfo(){
+        $user = Auth::user();
+        $scores = $user->scores;
+        return view('userProfile', compact('user', 'scores'));
+    }
+
+    public function editUserPass(Request $request){
+        $user = Auth::user();
+        $validatedData = $request->validate(['password'=> 'required|min:5|max:255']);
+
+        $hashedPass = Hash::make($validatedData['password']);
+        $user->password = $hashedPass;
+        $user->save();
+        return redirect('/profile')->with('success', 'Password Have Been Changed');
+    }
+
     public function index()
     {
         if (auth()->guest()) {
@@ -84,7 +104,6 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        @dd($user);
         return view('editUser', [
             'programs'=> Program::all(),
             'kelass'=>Kelas::all(),

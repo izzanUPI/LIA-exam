@@ -3,7 +3,7 @@
 @section('container')
 
     <div class="pagetitle">
-    <h1>Your Quizzes</h1>
+    <h3 class="mt-3 mb-2 " style="font-family: poppins;">Your Quizzes</h3>
     </div><!-- End Page Title -->
 
 

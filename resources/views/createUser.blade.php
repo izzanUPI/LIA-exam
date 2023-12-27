@@ -2,8 +2,9 @@
 
 @section('container')
 
-    <h1>Create a User</h1>
-    <a href="/users" class="btn btn-primary my-4">Back</a>
+   <h3 class="mt-3 mb-2 " style="font-family: poppins;">Create a User</h3>
+   <a href="/users" class="btn btn-primary my-4 px-5 text-left">Back</a>
+
         <section class="card">
             <div class="card-body">
                 <form action="/users" method="POST">

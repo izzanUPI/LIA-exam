@@ -2,8 +2,8 @@
 
 @section('container')
 
-    <h1>Edit User</h1>
-    <a href="/users" class="btn btn-primary my-4">Back</a>
+      <h3 class="mt-3 mb-2 " style="font-family: poppins;">Edit User</h3>
+    <a href="/users" class="btn btn-primary my-4 px-5">Back</a>
         <section class="card">
             <div class="card-body">
                 <form action="/users/{{ $user->id }}" method="post">

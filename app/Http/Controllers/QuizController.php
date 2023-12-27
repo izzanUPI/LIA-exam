@@ -16,6 +16,7 @@ class QuizController extends Controller
     public function index(){
         $user = Auth::user(); // Get the logged-in user
         
+        $userId = $user->user_id;
         if ($user->role_id === 1) {
             // If the user is an admin, fetch all quizzes
             $quizzes = Quiz::all();
@@ -98,5 +99,12 @@ class QuizController extends Controller
 
         ]);
         dd($validatedData);
+    }
+    public function show($id)
+    {
+        return view("createQuiz", [
+            'programs'=> Program::all(),
+            'kelass'=>Kelas::all()
+        ]);
     }
 }
