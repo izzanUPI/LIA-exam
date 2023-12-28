@@ -26,7 +26,7 @@ class QuestionController extends Controller
         $questions = $quiz->questions;
         $options = $quiz->options;
         $scores = Score::where('quiz_id', $quizId)
-                ->with('user') // Assuming you have a relationship defined between Score and User models
+                ->with('user') 
                 ->get();
         
         return view('QuestionPage',[

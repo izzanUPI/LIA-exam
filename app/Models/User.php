@@ -45,10 +45,10 @@ class User extends Authenticatable
     ];
 
     public function program(){
-        return $this->belongsTo(Program::class);
+        return $this->belongsTo(Program::class, 'program_id');
     }
     public function kelas(){
-        return $this->belongsTo(Kelas::class);
+        return $this->belongsTo(Kelas::class, 'kelas_id');
     }
     public function role(){
         return $this->belongsTo(Roles::class);

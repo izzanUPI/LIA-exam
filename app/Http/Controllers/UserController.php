@@ -20,8 +20,11 @@ class UserController extends Controller
 
     public function displayUserInfo(){
         $user = Auth::user();
+        // $user->load('program', 'kelas');
         $scores = $user->scores;
+        
         return view('userProfile', compact('user', 'scores'));
+        
     }
 
     public function editUserPass(Request $request){

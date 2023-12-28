@@ -93,8 +93,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Izzan',
                 'email' => 'izzan.alfadhil@upi.edu',
                 'password' => bcrypt('izzan123'),
-                'kelas_id' =>  '3',
-                'program_id' =>  '5',
+                'kelas_id' =>  '1',
+                'program_id' =>  '1',
                 'role_id' =>  '3',
         ]);
     }
