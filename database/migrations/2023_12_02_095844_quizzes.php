@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->foreignId('kelas_id');
             $table->foreignId('program_id');
+            $table->boolean('available')->default(0);
             $table->timestamps();
             
         });

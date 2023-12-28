@@ -34,6 +34,7 @@ class QuizController extends Controller
         // Fetch quizzes based on the user's grade and class
         $quizzes = Quiz::where('program_id', $programId)
                         ->where('kelas_id', $kelasId)
+                        ->where('available', 1)
                         ->get();
         }
 
@@ -74,6 +75,7 @@ class QuizController extends Controller
             'program_id'=>'required',
             'kelas_id'=>'required'
         ]);
+        
         Quiz::create($validatedData);
         return redirect('dashboard/quiz');
     }

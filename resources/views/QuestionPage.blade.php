@@ -4,12 +4,31 @@
 
 
 <h3 class="mt-3 mb-2 " style="font-family: poppins;">{{ $quiz->title }} Quiz Details</h3>
+
 @if (session()->has('success'))
 <div class="alert alert-success" role="alert">
     {{ session('success') }}
   </div>
 @endif
+
+@if ($quiz->available == 0)
+
+<h3 class="mt-3 mb-2 " style="font-family: poppins;">Quiz Status : Close</h3>
+<form action="/dashboard/quiz/{{ $quiz->id }}/question/open" method="post" class="d-inline">
+  @csrf
+  <button class="btn btn-primary my-3" role="button">Open Quiz</button>
+</form>
+    
+@else
+<h3 class="mt-3 mb-2 " style="font-family: poppins;">Quiz Status : Open</h3>
+<form action="/dashboard/quiz/{{ $quiz->id }}/question/close" method="post" class="d-inline">
+  @csrf
+  <button class="btn btn-primary my-3" role="button">Close Quiz</button>
+</form>
+    
+@endif
 <a class="btn btn-primary my-3" href="/dashboard/quiz/{{ $quiz->id }}/question/create" role="button">Add Question</a>
+
 <div class="row">
   <div class="col-lg-6">
     <div class="card">
@@ -77,4 +96,9 @@
     </div>
   </div>
 </div>
+<form action="/dashboard/quiz/{{ $quiz->id }}" method="post" class="d-inline">
+  @csrf
+  @method('DELETE')
+  <button class ="btn btn-danger border-0" onclick="return confirm('Are You Sure?')"> Delete Quiz</button>
+</form>
 @endsection

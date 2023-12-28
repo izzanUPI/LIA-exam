@@ -82,6 +82,9 @@ Route::resource('/users', UserController::class)->middleware('admin');
 
 Route::resource('/dashboard/quiz/{quiz}/question', QuestionController::class)->middleware('adminNTeacher');
 Route::get('/dashboard/quiz/{quiz}/question', [QuestionController::class,'index'])->name('view.quiz.show')->middleware('adminNTeacher');
+Route::post('/dashboard/quiz/{quiz}/question/open', [QuestionController::class, 'openQuiz']);
+Route::post('/dashboard/quiz/{quiz}/question/close', [QuestionController::class, 'closeQuiz']);
+Route::delete('/dashboard/quiz/{quiz}', [QuestionController::class, 'deleteQuiz'])->name('quiz.delete');
 
 Route::resource('/dashboard/quiz/{quiz}/question/{question}/option',OptionController::class)->middleware('adminNTeacher');
 

@@ -40,6 +40,8 @@ class ScoreController extends Controller
                       ->first();
         if($score){
             return redirect()->back()->with('warning', 'You already taken this quiz.');
+        }elseif($quiz->available == 0){
+            return redirect()->back()->with('warning', 'Quiz is Closed');
         }else{
         $quiz = Quiz::with('questions.options')->findOrFail($quizId);
         $questions = $quiz->questions;

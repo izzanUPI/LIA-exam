@@ -11,6 +11,7 @@ use App\Models\Score;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class QuestionController extends Controller
 {
@@ -36,6 +37,30 @@ class QuestionController extends Controller
             'options' => $options,
             'scores'=>$scores
         ]);
+    }
+
+    public function openQuiz(Quiz $quiz){
+        $quiz->available = true; // Set 'available' column to 1
+        $quiz->save(); // Save changes
+        // Redirect back or to a specific route after updating
+        return redirect()->back()->with('success', 'Quiz opened successfully');
+    }
+
+    public function closeQuiz(Quiz $quiz){
+        $quiz->available = false; // Set 'available' column to 1
+        $quiz->save(); // Save changes
+        // Redirect back or to a specific route after updating
+        return redirect()->back()->with('success', 'Quiz closed successfully');
+    }
+
+    public function deleteQuiz(Quiz $quiz){
+        $quiz->questions()->each(function ($question) {
+            $question->options()->delete();
+        });
+        $quiz->questions()->delete();
+        $quiz->delete();
+
+        return redirect('/dashboard/quiz')->with('success', 'Quiz deleted successfully');
     }
 
     /**
@@ -140,5 +165,6 @@ class QuestionController extends Controller
         return redirect()->route('view.quiz.show', ['quiz' => $quiz])
             ->with('success', 'Question deleted successfully');
     }
+
     
 }
